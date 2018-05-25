@@ -1,0 +1,14 @@
+
+$.ajax({
+
+	url: "@Url.Action("MethodName", "ControllerName")",
+	type: "GET",
+	cache: false,
+	data: { 'userId': userId, 'key': value},
+	success: function(data){
+			//DO some action on success
+	},
+	error: function(err){
+		toastr["error"]("Something went wrong!");
+	}
+});

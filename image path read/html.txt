@@ -1,0 +1,32 @@
+<br>
+<br>
+<br>
+<form action="your-action" method="post" (submit)="onAddMainLevelAccount(imageData)" enctype="multipart/form-data">
+  <dx-form id="form" [(formData)]="imageData" [colCount]="2" [readOnly]="false" [showColonAfterLabel]="true" [showValidationSummary]="true">
+    <h3>Profile Settings</h3>
+
+    <dxi-item dataField="DocumentDate" editorType="dxFileUploader">
+      <dxo-label text="Upload Image">
+      </dxo-label>
+      <dx-file-uploader 
+        selectButtonText="Select photo"
+        labelText=""
+        accept="*" 
+        uploadMode="useForm"
+        (onValueChanged)="onImageSelect($event)"
+        [multiple]="false"
+        >
+      </dx-file-uploader>
+      <!-- <input type="file" id="avatar" (change)="onImageSelect($event)" #fileInput> -->
+    </dxi-item>
+
+  </dx-form>
+  <dx-button id="button" text="Update profile" type="success"  [useSubmitBehavior]="true">
+  </dx-button>
+
+</form>
+<div style="color: red">
+    <img src={{imageURL}}  alt="image here"/>
+
+    
+</div>

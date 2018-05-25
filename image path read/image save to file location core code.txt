@@ -1,0 +1,37 @@
+try
+            {
+                byte[] filepathBase64 = Encoding.UTF8.GetBytes(model.FilePath);
+                string[] str = model.FilePath.Split(",");
+                byte[] filepath = Convert.FromBase64String(str[1]);
+
+                string ex = str[0].Split("/")[1].Split(";")[0];
+
+                string guidname = Guid.NewGuid().ToString();
+                //byte[] filepath = Encoding.UTF8.GetBytes(str[1]);
+                string filename = guidname + "." + ex;
+
+                File.WriteAllBytes(@"Documents/" + filename, filepath);
+
+                //VoucherDocumentDetail obj = _mapper.Map<VoucherDocumentDetail>(model);
+                VoucherDocumentDetail obj = new VoucherDocumentDetail();
+                obj.DocumentGUID = guidname;
+                //Doctype 1 for voucher document
+                obj.DocumentType = 1;
+                obj.Extension = "." + ex;
+                obj.FilePath = null;
+                obj.DocumentName = model.DocumentName;
+                obj.DocumentDate = model.DocumentDate;
+                obj.VoucherNo = model.VoucherNo;
+                obj.CreatedById = model.CreatedById;
+                obj.CreatedDate = DateTime.UtcNow;
+                obj.IsDeleted = false;
+                await _uow.VoucherDocumentDetailRepository.AddAsyn(obj);
+                await _uow.SaveAsync();
+                response.StatusCode = StaticResource.successStatusCode;
+                response.Message = "Success";
+            }
+            catch (Exception ex)
+            {
+                response.StatusCode = StaticResource.failStatusCode;
+                response.Message = StaticResource.SomethingWrong + ex.Message;
+            }

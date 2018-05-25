@@ -1,0 +1,25 @@
+
+
+  //Image Select
+  onImageSelect(event: any) {
+    debugger;
+    
+    //for dx-file-uploager path read
+    var file: File = event.value[0];
+
+    // var file: File = event.target.files[0];
+    var myReader: FileReader = new FileReader();
+    myReader.readAsDataURL(file);
+    myReader.onloadend = (e) => {
+      this.imageURL = myReader.result;
+      console.log('Path --> ', this.imageURL);
+    }
+  }
+
+
+  // MainLevelAccount Data
+  onAddMainLevelAccount(data: any) {
+    debugger;
+    this.imageData.Image=this.imageURL;
+    console.log(data);
+  }

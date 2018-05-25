@@ -1,0 +1,10 @@
+
+import { DomSanitizer } from '@angular/platform-browser';
+
+constructor(private _DomSanitizer: DomSanitizer){}
+
+ 
+//TODO: Unsafe to Safe Change
+    sanitize(){
+        return this._DomSanitizer.bypassSecurityTrustUrl(this.imageURL);
+    }

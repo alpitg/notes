@@ -1,0 +1,10 @@
+TICKET ----
+http://108.168.203.227/SDDTicketing/AddTicket.aspx
+
+VP link ----
+http://108.168.203.230/
+alpit.gajbhiye@smartdatainc.net
+alpit01
+
+Google Console ------
+https://console.cloud.google.com/code/develop/repo?project=clear-fusion-193608

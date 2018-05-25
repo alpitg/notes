@@ -1,0 +1,1 @@
+<a [href]="sanitize()" target="_blank" download="downloaded-file">Download</a>
